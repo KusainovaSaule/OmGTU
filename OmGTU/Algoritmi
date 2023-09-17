@@ -1,1 +1,63 @@
+using System;
+class LaboratornayaRabota {
+  static void Main() {
+    int k=0,s=0, proiz=1, max=0;
+    Console.WriteLine("Количество вводимых чисел: ");
+    int n=Convert.ToInt32(Console.ReadLine());
+    for (int i=0; i<n;i++){
+        int a=Convert.ToInt32(Console.ReadLine());
+        if (a>0){
+            k=k+1;
+        }
+        if (a<0){
+            s=s+a;
+        }
+        if (a%2!=0){
+           proiz=proiz*a; 
+        }
+        if (a>max){
+            max=a;
+        }
+        
+    }
+    Console.WriteLine("Количество положительных чисел = " + k);
+    if ((n-k)!=0){
+        Console.WriteLine("Среднее арифметическое отрицательых чисел: ");
+        Console.WriteLine((double)s/(n-k)); 
+        }
+        else{
+        Console.WriteLine("Отрицательых чисел нет");
+        }
+    Console.WriteLine("Произведение нечетных чисел = " + proiz);
+    Console.WriteLine("Максимальный элемент = " + max);
+  }
+}
 
+
+using System;
+class LaboratornayaRabota {
+  static void Main() {
+    int k=0, kr3=0, min=0;
+    Console.WriteLine("Количество вводимых чисел: ");
+    int n=Convert.ToInt32(Console.ReadLine());
+    int pred=Convert.ToInt32(Console.ReadLine());
+    for (int i=1; i<n;i++){
+        int tek=Convert.ToInt32(Console.ReadLine());
+        if (tek>pred){
+            k=k+1;
+        }
+        if ((tek+pred)%3==0){
+        kr3=kr3+1;   
+        }
+        if (tek<pred){
+            min=min+1;
+        }
+        pred=tek;
+        }
+        
+    Console.WriteLine("Количество значений, которые больше предыдущего = " + k);
+    Console.WriteLine("Количество пар элементов, сумма которых кратна 3 = " + kr3);
+    Console.WriteLine("Количество элементов, значение которых меньше всех предыдущих = " + min);
+    }
+    
+}
