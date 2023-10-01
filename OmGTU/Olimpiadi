@@ -1,1 +1,26 @@
-
+with open("input6.txt", "r") as file:
+    N = int(file.readline())
+    companies = []
+    stoim=2147483647
+    for i in range(N):
+        lst = []
+        line = file.readline().split()
+        xi1, yi1, zi1, xi2, yi2, zi2 = map(int, line[:6])
+        ci1, ci2 = map(float, line[6:])
+        companies.append((xi1, yi1, zi1, xi2, yi2, zi2, ci1, ci2))
+        v1 = (xi1 * yi1 * zi1) / 1000
+        s1 = 2 * xi1 * yi1 + 2 * yi1 * zi1 + 2 * zi1 * xi1
+        v2 = (xi2 * yi2 * zi2) / 1000
+        s2 = 2 * xi2 * yi2 + 2 * yi2 * zi2 + 2 * zi2 * xi2
+        y=(ci1*s2-s1*ci2)/(v1*s2-s1*v2)
+        mol=round(y,2)
+        if mol<stoim:
+            stoim=mol
+            nom=i+1
+            lst.append(nom)
+        elif mol==stoim:
+            stoim = mol
+            nom = i + 1
+            nom=min(lst)
+print("Номер фирмы, у которой стоимость собственно молока минимальна= ", nom)
+print("Стоимость в рублях= ", stoim)
