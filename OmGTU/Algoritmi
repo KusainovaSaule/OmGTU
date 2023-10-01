@@ -1,3 +1,47 @@
+30.09.2023 Задания 1-3
+using System;
+class z3009 {
+  static void Main() {
+      int maxch=-2147483647,k=0, mins=2147483647, el=0;
+      int n=Convert.ToInt32(Console.ReadLine());
+      int[] myArr=new int[n];
+      for (int i=0; i<n; i++){
+          myArr[i]=Convert.ToInt32(Console.ReadLine());
+          int s=0;
+          if ((myArr[i]%2==0)&&(myArr[i]>maxch)){
+              maxch=myArr[i];
+              
+          }
+          int ost=Math.Abs(myArr[i]);
+            while (ost > 0)
+            {
+                int z=ost % 10;
+                if (z==5){
+                    k=k+1;
+                    break;
+                }
+                ost=ost/10;
+            }
+            int ost2=Math.Abs(myArr[i]);
+            while (ost2>0)
+            {
+                s=s+ost2 % 10;
+                ost2=ost2/ 10;
+            }
+            if (s<mins)
+            {
+                mins=s;
+                el=myArr[i];
+            }
+          }
+    Console.WriteLine("Максимальный четный элемент = " +maxch);
+    Console.WriteLine("Количество элементов, в которых есть цифра 5 = " +k);
+    Console.WriteLine("Элемент с наименьшей суммой цифр = " + el);
+    Console.WriteLine("Наименьшая сумма цифр = " + mins);
+  }
+  
+}
+
 28.09.2023 Задание 4
 using System;
 class z4 {
