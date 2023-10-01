@@ -1,3 +1,41 @@
+28.09.2023 Задание 4
+using System;
+class z4 {
+  static void Main() {
+      int a, n, mind=2147483647, tekd=0;
+      Console.Write("Количество чисел = ");
+      n=Convert.ToInt32(Console.ReadLine());
+      for (int i = 0; i<n; i++){
+          a=Convert.ToInt32(Console.ReadLine());
+          if (a<0){
+              tekd=tekd+1;
+              
+          }
+          else{
+              if (tekd>0 && tekd<mind){
+                  mind=tekd;
+              }
+              tekd=0;
+              }
+          
+      }
+      if (tekd>0 && tekd<mind){
+          mind=tekd;
+      }
+      if (mind==2147483647){
+          Console.WriteLine("Отрицательных чисел нет");
+          
+      }
+      else{
+          Console.WriteLine("Минимальный размер подпоследовательности из отрицательных чисел: " + mind);
+      }
+      
+  }
+}
+
+
+
+
 using System;
 class LaboratornayaRabota {
   static void Main() {
