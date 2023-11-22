@@ -1,6 +1,6 @@
 Максимальная сумма элементов из пар, кратная 3
 using System;
-class HelloWorld {
+class MaxSum {
   static void Main() {
         int k, a, b, sum, maxsum;
         Console.WriteLine("Введите количествол пар = ");
@@ -43,7 +43,7 @@ class HelloWorld {
 
 Количество пар строк, состоящих из одних и тех же символов
 using System;
-class HelloWorld {    
+class KolPar {    
     static void Main() {
         Console.Write("Введите количество строк = ");         
         int n = Convert.ToInt32(Console.ReadLine()); 
