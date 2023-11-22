@@ -1,4 +1,4 @@
-Расстановка серыхи белых мышек
+Расстановка серых и белых мышек
 using System;
 using System.Linq;
 class BelieSerie {
