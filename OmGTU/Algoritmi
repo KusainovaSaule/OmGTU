@@ -1,3 +1,119 @@
+Массивы с импользованием функций
+using System;
+class Function{
+    static void Massiv(int n, int m, int[,] result){
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < m; j++){
+                result[i,j]= Convert.ToInt32(Console.ReadLine());
+            }
+        }
+    }
+    static void Chetnie(int n, int m, int[,] result){
+        for (int i = 0; i < n; i++){
+            int max = -2147483648;
+            for (int j = 0; j < m; j++){
+                if (result[i,j]%2 == 0 && result[i, j] > max){
+                    max = result[i,j];
+                }
+            }
+            if (max == -2147483648){
+                Console.WriteLine($"В строке {i+1} нет максимального четного элемента");
+            }
+            else {Console.WriteLine($"В строке {i+1} максимальный четный элемент = {max}"); 
+                
+            }
+        }
+    }
+    static void Nenul(int n, int m, int[,] result)
+    {
+        int[,] Obrat = new int[m, n];
+        for (int i = 0; i<n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                Obrat[j, i] = result[i,j];
+            }
+        }
+        for (int k= 0; k<m; k++)
+        {
+            int c = 0;
+            for (int l= 0; l<n; l++)
+            {
+                if (Obrat[k,l]!=0)
+                {
+                    c=c+1;
+                }
+            }
+            Console.WriteLine($"количество ненулевых элементов в {k+1} столбце = {c}");
+        }
+    }
+    static void Preobr(int n, int m, int[,] result)
+    {
+        int[,] Obrat = new int[m, n];
+        int[,] Perestanovka = new int[m, n]; 
+        int[,] PP = new int[n, m];
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                Obrat[j, i] = result[i, j];
+            }
+        }
+        for(int l = 0; l<m; l++)
+        {
+            if (m % 2 == 0 || l != m - 1)
+            {
+                for (int k = 0; k < n; k++)
+                {
+                    if (l % 2 != 0)
+                    {
+                        Perestanovka[l, k] = Obrat[l - 1, k];
+                    }
+                    else
+                    {
+                        Perestanovka[l, k] = Obrat[l + 1, k];
+                    }
+                }
+            }
+            else
+            {
+                for (int o = 0; o < n; o++)
+                    Perestanovka[l, o] = Obrat[l, o];
+            }
+        }
+
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                PP[j, i] = Perestanovka[i, j];
+            }
+        }
+        Console.WriteLine("Преобразование");
+        for(int l = 0; l < n; l++)
+        {
+            for (int k = 0;k < m; k++)
+            {
+                Console.Write($" {PP[l,k]}");
+            }
+            Console.WriteLine("");
+        }
+    }
+    static void Main(){
+        Console.WriteLine("Введите количество строк = ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Введите количество столбцов = ");
+        int m = Convert.ToInt32(Console.ReadLine());
+        int[,] mas = new int[n, m];
+        Massiv(n, m, mas);
+        Chetnie(n, m, mas);
+        Nenul(n, m, mas);
+        Preobr(n, m, mas);
+    }
+}
+
+
+
 Максимальная сумма элементов из пар, кратная 3
 using System;
 class MaxSum {
@@ -40,6 +156,9 @@ class MaxSum {
             
     }
 }
+
+
+
 
 Количество пар строк, состоящих из одних и тех же символов
 using System;
