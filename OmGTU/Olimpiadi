@@ -1,6 +1,6 @@
 постройка дома 
 
-x, y, l, c1, c2, c3, c4, c5, c6 = (int(input()) for i in range(9))
+x, y, l, c1, c2, c3, c4, c5, c6 = [int(i) for i in input().split(" ")]
 summa = 0
 p = 2*(x+y) #периметр нового дома
 new = c4 + c5 #постройка из нового
