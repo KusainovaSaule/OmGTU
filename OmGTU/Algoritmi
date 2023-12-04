@@ -1,3 +1,28 @@
+using System;
+class Practic {
+  static void Main() {
+      Console.WriteLine("Введите t = ");
+      int t = Convert.ToInt32(Console.ReadLine());
+      Console.WriteLine("Введите n = ");
+      int n = Convert.ToInt32(Console.ReadLine());
+      int sh = 0;
+      int v = t;
+      for (int i = 0; i < n; i++){
+          Console.WriteLine("Введите a и b через пробел:");
+          string ab = Console.ReadLine();
+          int a = Convert.ToInt32(ab.Split(' ')[0]);
+          int b = Convert.ToInt32(ab.Split(' ')[1]);
+          sh = sh + a;
+          v = Math.Min(sh+t, v+b);
+          
+      }
+      Console.WriteLine("Минимальный путь от S до F = " + Math.Min(sh+t,v));
+    }
+}
+
+
+##################################################################################################
+
 Расстановка серых и белых мышек
 using System;
 using System.Linq;
