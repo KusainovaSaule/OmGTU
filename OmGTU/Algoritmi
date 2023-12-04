@@ -1,3 +1,75 @@
+Студенты. Выборка. Использование классов, конструкторов
+using System;
+class Student{
+    public string Name{get;set;}
+    public int Data{get;set;}
+    public string Group{get;set;}
+    
+    public Student(string name, int data, string group){
+        Name=name;
+        Data=data;
+        Group=group;
+    }
+    
+    
+    public static void ViborkaData(Student[] students, int vData){
+        Console.WriteLine($"Студенты с датой рождения {vData}:");
+        foreach (var student in students){
+            if (student.Data==vData){
+                Console.WriteLine($"{student.Name}, год рождения: {student.Data}, группа: {student.Group}");
+            }
+        }
+    }
+    
+    public static void ViborkaGroup(Student[] students, string vGroup){
+        Console.WriteLine($"Студенты из группы {vGroup}:");
+        foreach (var student in students){
+            if (student.Group==vGroup){
+                Console.WriteLine($"{student.Name}, год рождения: {student.Data}, группа: {student.Group}");
+            }
+        }
+    }
+}
+class Osnova {
+  static void Main() {
+    Console.WriteLine("Введите количество студентов = ");
+    int k=Convert.ToInt32(Console.ReadLine());
+    
+    
+    Student[] students=new Student[k];
+    
+    
+    for (int i=0; i<k;i++){
+        Console.WriteLine($"Введите данные человека {i+1}:");
+        
+        Console.Write("ФИО студента: ");
+        string name=Console.ReadLine();
+        
+        Console.Write("Год рождения студента: ");
+        int data=Convert.ToInt32(Console.ReadLine());
+        
+        Console.Write("Группа студента: ");
+        string group=Console.ReadLine();
+        Console.WriteLine();
+        
+        students[i]=new Student(name, data, group);
+        
+    }
+    Console.Write("Введите год рождения студента для выборки = ");
+    int vData=Convert.ToInt32(Console.ReadLine());
+    Student.ViborkaData(students, vData);
+    
+    Console.Write("Введите группу студента для выборки = ");
+    string vGroup=Console.ReadLine();
+    Student.ViborkaGroup(students, vGroup);
+    
+  }
+}
+
+
+
+
+Трасса. Поиск минимального пути
 using System;
 class Practic {
   static void Main() {
