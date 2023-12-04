@@ -1,3 +1,117 @@
+Библиотеки. Выборка.
+using System;
+class Library{
+    public string Adres {get;set;}
+    public int Knigi{get;set;}
+    public int Posetiteli{get;set;}
+    public string FIOd{get;set;}
+    public string Raion{get;set;}
+    
+    public Library(string adres, int knigi, int posetiteli, string fiod, string raion){
+        Adres=adres;
+        Knigi=knigi;
+        Posetiteli=posetiteli;
+        FIOd=fiod;
+        Raion=raion;
+    }
+    
+    
+    public static void ViborkaRaion(Library[] libraries, string vRaion){
+        Console.WriteLine($"Библиотеки в районе {vRaion}:");
+        foreach (var library in libraries){
+            if (library.Raion==vRaion){
+                Console.WriteLine($"адрес: {library.Adres}, количество книг: {library.Knigi}, количество посетителей: {library.Posetiteli}, ФИО директора{library.FIOd}, район {library.Raion}");
+            }
+        }
+    }
+    
+    public static void ViborkaPos(Library[] libraries, int vPos){
+        Console.WriteLine($"Библиотеки, в которых количество посетителей превышает {vPos}:");
+        foreach (var library in libraries){
+            if (library.Posetiteli>vPos){
+                Console.WriteLine($"адрес: {library.Adres}, количество книг: {library.Knigi}, количество посетителей: {library.Posetiteli}, ФИО директора{library.FIOd}, район {library.Raion}");
+            }
+        }
+    }
+    public static void ViborkaKnigi(Library[] libraries, int vKnigi){
+        Console.WriteLine($"Библиотеки, в которых количество книг не менее {vKnigi}:");
+        foreach (var library in libraries){
+            if (library.Knigi>=vKnigi){
+                Console.WriteLine($"адрес: {library.Adres}, количество книг: {library.Knigi}, количество посетителей: {library.Posetiteli}, ФИО директора{library.FIOd}, район {library.Raion}");
+            }
+        }
+    }
+    
+    
+    public static void ViborkaFIOd(Library[] libraries, string vFIOd){
+        Console.WriteLine($"Информация о библиотеке директора {vFIOd}:");
+        foreach (var library in libraries){
+            if (library.FIOd==vFIOd){
+                Console.WriteLine($"адрес: {library.Adres}, количество книг: {library.Knigi}, количество посетителей: {library.Posetiteli}, район {library.Raion}");
+            }
+        }
+    }
+}
+class Osnova {
+  static void Main() {
+    Console.WriteLine("Введите количество библиотек = ");
+    int k=Convert.ToInt32(Console.ReadLine());
+    
+    
+    Library[] libraries=new Library[k];
+    
+    
+    for (int i=0; i<k;i++){
+        Console.WriteLine($"Введите данные библиотеки {i+1}:");
+        
+        Console.Write("адрес библиотеки: ");
+        string adres=Console.ReadLine();
+        
+        
+        
+        Console.Write("количество книг: ");
+        int knigi=Convert.ToInt32(Console.ReadLine());
+        
+        Console.Write("количество посетителей: ");
+        int posetiteli=Convert.ToInt32(Console.ReadLine());
+        
+        Console.Write("ФИО директора: ");
+        string fiod=Console.ReadLine();
+        
+        Console.Write("район библиотеки: ");
+        string raion=Console.ReadLine();
+        Console.WriteLine();
+        
+        libraries[i]=new Library(adres, knigi, posetiteli, fiod, raion);
+        
+    }
+    
+    
+    Console.Write("Введите район для выборки = ");
+    string vRaion=Console.ReadLine();
+    Library.ViborkaRaion(libraries, vRaion);
+    Console.WriteLine();
+    
+    Console.Write("Введите количество посетителей для выборки = ");
+    int vPos=Convert.ToInt32(Console.ReadLine());
+    Library.ViborkaPos(libraries, vPos);
+    Console.WriteLine();
+    
+    Console.Write("Введите количество книг для выборки = ");
+    int vKnigi=Convert.ToInt32(Console.ReadLine());
+    Library.ViborkaKnigi(libraries, vKnigi);
+    Console.WriteLine();
+    
+    Console.Write("Введите ФИО директора для поиска информации о библиотеке = ");
+    string vFIOd=Console.ReadLine();
+    Library.ViborkaFIOd(libraries, vFIOd);
+    Console.WriteLine();
+    
+    
+  }
+}
+
+
 Студенты. Выборка. Использование классов, конструкторов
 using System;
 class Student{
