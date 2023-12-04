@@ -2,10 +2,10 @@
 
 x, y, l, c1, c2, c3, c4, c5, c6 = [int(i) for i in input().split(" ")]
 summa = 0
-p = 2*(x+y) #периметр нового дома
-new = c4 + c5 #постройка из нового
-old = c2 + c3 #постройка из старого разрушенного
-snos = c2 + c6 #снос и вывоз
+p = 2*(x+y)
+new = c4 + c5
+old = c2 + c3
+snos = c2 + c6
 if (old <= new + snos) and (c1 <= old):
     if (l >= max(x,y)) and (l<p):
         summa = c1 * max(x, y) + (p - l) * new + (l - max(x, y)) * old
