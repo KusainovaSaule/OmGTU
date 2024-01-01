@@ -1,3 +1,34 @@
+Делители.
+using System;
+class Deliteli {
+    static void Main(){
+        for (int i = 106732567; i < 152673836 + 1; i++) { 
+            double kor;
+            kor = Math.Sqrt(i);
+            int deliteli = 0;
+            if (Math.Round(kor) == kor){
+                int maxd = 1;
+                for (int j = 2; j < Math.Round(kor)-1; j++){
+                    if (i % j==0){
+                        if (maxd == 1){
+                            maxd = i / j;
+                        }
+                        deliteli=deliteli+2;
+                    }
+                }
+                if (deliteli == 2){
+                    Console.WriteLine(i);
+                    Console.WriteLine(maxd);
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+}
+
+
+
+
 Семья.
 using System;
 using System.Linq;
