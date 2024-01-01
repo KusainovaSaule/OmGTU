@@ -1,3 +1,53 @@
+Туристы
+using System;
+using System.Linq;
+class Touristi {
+    static void Main() {
+        Console.WriteLine("Введите время восхода через пробел часы и минуты:");
+        string voshodt = Console.ReadLine();
+        Console.WriteLine("Введите время заката через пробел часы и минуты:");
+        string zakatt = Console.ReadLine();
+        Console.WriteLine("Введите скорость в километрах в час:");
+        double skorost = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Введите количество пуктов:");
+        int kolp = Convert.ToInt32(Console.ReadLine());
+        double[] punkti = new double[kolp];
+        Console.WriteLine("Введите расстояния до пункта:");
+        for (int i = 0; i < kolp; i += 1) {
+            punkti[i] = Convert.ToDouble(Console.ReadLine());
+        }
+        double voshod_hours = Convert.ToDouble(voshodt.Split(' ')[0]);
+        double voshod_minutes = Convert.ToDouble(voshodt.Split(' ')[1]) / 60;
+        double voshod = voshod_hours + voshod_minutes;
+        double zakat_hours = Convert.ToDouble(zakatt.Split(' ')[0]);
+        double zakat_minutes = Convert.ToDouble(zakatt.Split(' ')[1]) / 60;
+        double zakat = zakat_hours + zakat_minutes;
+        double time = zakat - voshod;
+        double dist = skorost * time;
+        int c = 0;
+        int ost = 0;
+        int step = 1;
+        double pos = 0;
+
+        while (ost + step < kolp) {
+            if (punkti[ost + step] - pos <= dist) {
+                step =step+ 1;
+            } else {
+                ost =ost+step;
+                pos = punkti[ost - 1];
+                step = 1;
+                c=c+1;
+                Console.Write("{0} ",ost);
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine(c+1);
+    }
+}
+
+
+
 Делители.
 using System;
 class Deliteli {
