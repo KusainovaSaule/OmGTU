@@ -179,6 +179,43 @@ using System.Linq;
 
 
 ))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+Количество образца в строке
+
+using System;
+class KolObraz {
+  static void Main() {
+        
+        Console.WriteLine("Введите образец = ");
+        string obraz = Console.ReadLine();
+        int c=0;
+        Console.WriteLine("Введите количество строк = ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        for (int i=0; i<n; i++){
+        Console.WriteLine("Введите текст строки = ");
+        string text = Console.ReadLine();
+        c = c+KolObrazec(text, obraz);
+        }
+        Console.WriteLine($"Образец \"{obraz}\" появляется в тексте {c} раз.");
+    }
+
+    static int KolObrazec(string text, string obraz)
+    {
+        int c = 0;
+        int index = 0;
+
+        while ((index = text.IndexOf(obraz, index)) != -1)
+        {
+            c=c+1;
+            index =index+ obraz.Length;
+        }
+
+        return c;
+    }
+}
+
+
+
+
 Библиотеки. Выборка.
 using System;
 class Library{
