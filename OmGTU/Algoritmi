@@ -1,3 +1,103 @@
+Семья.
+using System;
+using System.Linq;
+    public class Family{
+        public string Fio {get; set;}
+        public string Pol {get; set;}
+        public int GodR {get; set;}
+        public string Mother {get; set;}
+        public string Father {get; set;}
+        public int[] Schools {get; set;}
+        public Family(string fio, string pol, int godr, string mother, string father, int[] schools){
+            Fio = fio;
+            Pol = pol;
+            GodR = godr;
+            Mother = mother;
+            Father = father;
+            Schools = schools;
+        }
+        public void OdnaSchool(Family i)
+        {
+            if (i.Schools.Length == 1) { 
+                Console.WriteLine(i.Fio); 
+                
+            }
+        }
+    }
+    class Osnova{
+        public static void Main()
+        {
+            Family[] Families = new Family[5];
+            Families[0] = new Family("Кусаинова Дария Дархановна", "ж", 2015, "Кусаинова Айм Муратгалыевна ", "Кусаинов Дархан Бисембаевич", new int[1] {131});
+            Families[1] = new Family("Кусаинов Тамерлан Дарханович", "м", 2005, "Кусаинова Айм Муратгалыевна ", "Кусаинов Дархан Бисембаевич", new int[2] {131, 29});
+            Families[2] = new Family("Аушахметова Сафия Октавиановна", "ж", 2005, "Кусаинова Динара Бисембаевна ", "Аушахметов Октавиан Шоткеевич", new int[2] {81, 131});
+            Families[3] = new Family("Кусаинова Рената Куатовна", "ж", 2009, "Кусаинова Динара Руслановна ", "Кусаинов Куат Бисембаевич", new int[1] {68});
+            Families[4] = new Family("Муканова Сабина Маратовна", "ж", 2006, "Муканова Сатира Канатовна ", "Муканов Канат Мансурович", new int[3] {23, 15, 131});
+            int k = 0;
+            string MaxR=System.String.Empty;
+            int MaxK = 0;
+            for (int i = 0; i < Families.Length; i++)
+            {
+                string Parents = Families[i].Mother + Families[i].Father;
+                int c = 0;
+                for (int j = i + 1; j < Families.Length; j++)
+                {
+                    if (Families[j].Mother == Families[i].Mother && Families[j].Father == Families[i].Father)
+                        c=c+1;
+                }
+                if (c > MaxK)
+                {
+                    MaxK = c;
+                    MaxR = Parents;
+                }
+            }
+            Console.WriteLine($"ФИО родителей с наибольшим количеством детей: {MaxR}");
+            Console.Write("Введите год: ");
+            int g = Convert.ToInt32(Console.ReadLine());
+            foreach (Family x in Families) { 
+                if (x.GodR == g) {
+                k=k+1;
+                } 
+            }
+            Console.WriteLine($"Количество детей, которые родились в {g} году: {k}");
+            int PSchool = 0;
+            int MPupils = 0;
+            foreach (Family x in Families)
+            {
+                foreach (int j in x.Schools)
+                {
+                    int Pupils = 0;
+                    foreach (Family y in Families)
+                    {
+                        bool flag = false;
+                        foreach (int a in y.Schools) { 
+                            if (a == j) { 
+                            flag = true; 
+                            break;
+                        } 
+                            
+                    }
+                        if (flag) { 
+                            Pupils=Pupils+1; }
+                    }
+                    if (Pupils > MPupils) { 
+                        MPupils = Pupils; 
+                        PSchool = j; 
+                        
+                    }
+                }
+            }
+            Console.WriteLine($"Номер школы, которая чаще всего встречается: {PSchool}");
+            Console.WriteLine("ФИО детей, которые учились только в одной школе:");
+            foreach (Family x in Families) {x.OdnaSchool(x); 
+                
+        }
+    }
+}
+
+
+
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 Библиотеки. Выборка.
 using System;
 class Library{
