@@ -1,0 +1,34 @@
+class TrapezoidalRule{
+    public static double Solve(Func<double, double> f, double a, double b, double dx){
+        if (b<a || dx<=0 || (a+b+dx)%1!=0){
+            throw new ArgumentException ("Технические шоколадки. Данные введены неверно");
+        }
+        if (Math.Abs(b-a)<1E-7){
+            return 0;
+        }
+        double summa = (a+b)*0.5*dx;
+        double c = Math.Abs(b-a)/dx;
+        for (int i=1; i<c; i++){
+            summa=summa+f(a+i*dx);
+        }
+        return summa*dx;
+    }
+}
+
+
+
+Func<double, double> f=(double x) => -x*x+9;
+var answ = TrapezoidalRule.Solve(f, -3, 3, 0.1);
+answ
+Error: System.ArgumentException: Технические шоколадки. Данные введены неверно
+at Submission#3.TrapezoidalRule.Solve(Func`2 f, Double a, Double b, Double dx)
+at Submission#4.<<Initialize>>d__0.MoveNext()
+--- End of stack trace from previous location ---
+at Microsoft.CodeAnalysis.Scripting.ScriptExecutionState.RunSubmissionsAsync[TResult](ImmutableArray`1 precedingExecutors, Func`2 currentExecutor, 
+StrongBox`1 exceptionHolderOpt, Func`2 catchExceptionOpt, CancellationToken cancellationToken)
+
+
+
+
+f(2.9)
+0.5899999999999999
